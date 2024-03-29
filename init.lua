@@ -26,6 +26,10 @@ vim.opt.rtp:prepend(lazypath)
 -- this is where to install the plugins
 require('lazy').setup({
 	"nvim-telescope/telescope.nvim",
+	"nvim-lua/plenary.nvim",
+	"BurntSushi/ripgrep",
+	"nvim-telescope/telescope-fzf-native.nvim",
 })
 
 -- configuring telescope
+
