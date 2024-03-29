@@ -27,9 +27,25 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	"BurntSushi/ripgrep",
 	"nvim-telescope/telescope-fzf-native.nvim",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function ()
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = { "c", "lua", "vim", "python", "java", "html" },
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end
+	}
 })
 
 -- configuring telescope
-
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>pf', builtin.git_files, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
