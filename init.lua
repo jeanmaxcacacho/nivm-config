@@ -23,4 +23,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- this is where to install the plugins
+require('lazy').setup({
+	"nvim-telescope/telescope.nvim",
+})
 
+-- configuring telescope
