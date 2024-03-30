@@ -25,9 +25,14 @@ vim.opt.rtp:prepend(lazypath)
 
 -- this is where to install the plugins
 require('lazy').setup({
-	"nvim-telescope/telescope.nvim",
-	"nvim-lua/plenary.nvim",
-	"nvim-telescope/telescope-fzf-native.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = '0.1.6',
+		dependencies = {
+			{ "nvim-lua/plenary.nvim","nvim-telescope/telescope-fzf-native.nvim" } 
+		},
+
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
